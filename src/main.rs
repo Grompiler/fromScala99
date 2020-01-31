@@ -58,16 +58,16 @@ fn num_of_element(a_list: Vec<i32>) -> usize {
     res0: Int = 6*/
     a_list.len()
 }
-//
-//fn reverse(a_list: Vec<i32>) -> Vec<i32>{
-//    /*P05 (*) Reverse a list.
-//    Example:
-//
-//    scala> reverse(List(1, 1, 2, 3, 5, 8))
-//    res0: List[Int] = List(8, 5, 3, 2, 1, 1)*/
-//    for i in a_list.iter() {
-//        print!("{:?}", i);
-//    }
-//    a_list.iter().rev().collect()
-//
-//}
+
+fn reverse(a_list: Vec<i32>) -> Vec<i32>{
+    /*P05 (*) Reverse a list.
+    Example:
+
+    scala> reverse(List(1, 1, 2, 3, 5, 8))
+    res0: List[Int] = List(8, 5, 3, 2, 1, 1)*/
+    for i in a_list.iter() {
+        print!("{:?}", i);
+    }
+    a_list.iter().rev().collect()
+
+}
