@@ -1,4 +1,3 @@
-
 fn main() {
     println!("Hello, world!");
     let vec = vec![1, 23, 5, 5];
@@ -86,14 +85,32 @@ fn palindrome(mut a_list: Vec<i32>) -> bool {
         scala> isPalindrome(List(1, 2, 3, 2, 1))
         res0: Boolean = true
     */
-    let mut res: bool = false;
-    let mut count: usize = 0;
-//    loop {
-//        if a_list.iter().collect::<&i32>() == a_list.iter().collect::<&i32>() {
-//            count += 1;
-//        }
-//        break
-//    }
-    println!("{:?}", count);
-    res
+
+    let mut tmp: Vec<i32> = a_list.clone();
+    tmp.reverse();
+    a_list == tmp
+}
+
+fn flatten_list() {
+    /*
+    P07 (**) Flatten a nested list structure.
+    Example:
+
+    scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+    res0: List[Any] = List(1, 1, 2, 3, 5, 8)
+    */
+//    this should not exists
+}
+
+fn eliminate_consecutive_duplicate(a_list: Vec<i32>) -> Vec<i32> {
+    /*
+    P08 (**) Eliminate consecutive duplicates of list elements.
+    If a list contains repeated elements they should be replaced with a single copy of the element.
+    The order of the elements should not be changed.
+    Example:
+
+    scala> compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+    res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
+    */
+
 }
