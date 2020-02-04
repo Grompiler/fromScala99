@@ -1,29 +1,36 @@
+use std::borrow::Borrow;
+
 fn main() {
     println!("Hello, world!");
     let vec = vec![1, 23, 5, 5];
-    let res = last(vec);
-    println!("the last element is {:?}", res);
-    let vec = vec![1, 23, 15, 5];
-    let res = last_but_one(vec);
-    println!("the last but one element is {:?}", res);
-    let vec = vec![1, 23, 15, 5];
-    let res = k_th(vec, 2); // handle panic
-    println!("the k th element is {:?}", res);
-    let vec = vec![1, 23, 15, 5];
-    let res = num_of_element(vec);
-    println!("the list len is {:?}", res);
-    let vec = vec![1, 23, 15, 5];
-    let res = reverse(vec);
-    println!("the reversed list is {:?}", res);
-    let vec = vec![1, 23, 15, 5];
     let vec2 = vec![1, 2, 3, 2, 1];
-    let res = palindrome(vec);
-    let res2 = palindrome(vec2);
-    println!("{:?}", res);
-    println!("{:?}", res2);
+    let vec3 = vec![vec.clone(), vec2.clone()];
+
+    let res = last(&vec);
+    println!("the last element is {:?}", res);
+
+    let res = last_but_one(&vec);
+    println!("the last but one element is {:?}", res);
+
+    let res = k_th(&vec, 1); // handle panic
+    println!("the k th element is {:?}", res);
+
+    let res = num_of_element(&vec);
+    println!("the list len is {:?}", res);
+
+    let res = reverse(&vec);
+    println!("the reversed list is {:?}", res);
+
+    let res = palindrome(&vec);
+    let res2 = palindrome(&vec2);
+    println!("res is a palindrome: {:?}", res);
+    println!("res2 is a palindrome: {:?}", res2);
+
+    let res = flatten_list(&vec3);
+//    println!("the reversed list is {:?}", res);
 }
 
-fn last(a_list: Vec<i32>) -> Option<i32> {
+fn last(a_list: &Vec<i32>) -> Option<i32> {
     /*P01 (*) Find the last element of a list.
     Example:
 
@@ -33,7 +40,7 @@ fn last(a_list: Vec<i32>) -> Option<i32> {
     a_list.last().copied()
 }
 
-fn last_but_one(a_list: Vec<i32>) -> Option<i32> {
+fn last_but_one(a_list: &Vec<i32>) -> Option<i32> {
     /*P02 (*) Find the last but one element of a list.
     Example:
 
@@ -44,7 +51,7 @@ fn last_but_one(a_list: Vec<i32>) -> Option<i32> {
     tmp.last().copied()
 }
 
-fn k_th(a_list: Vec<i32>, k: usize) -> Option<i32> {
+fn k_th(a_list: &Vec<i32>, k: usize) -> Option<i32> {
     /*P03 (*) Find the Kth element of a list.
     By convention, the first element in the list is element 0.
     Example:
@@ -54,7 +61,7 @@ fn k_th(a_list: Vec<i32>, k: usize) -> Option<i32> {
     a_list.get(k).copied()
 }
 
-fn num_of_element(a_list: Vec<i32>) -> usize {
+fn num_of_element(a_list: &Vec<i32>) -> usize {
     /*
     P04 (*) Find the number of elements of a list.
     Example:
@@ -64,7 +71,7 @@ fn num_of_element(a_list: Vec<i32>) -> usize {
     a_list.iter().count()
 }
 
-fn reverse(a_list: Vec<i32>) -> Vec<i32> {
+fn reverse(a_list: &Vec<i32>) -> Vec<i32> {
     /*P05 (*) Reverse a list.
     Example:
 
@@ -77,7 +84,7 @@ fn reverse(a_list: Vec<i32>) -> Vec<i32> {
     tmp
 }
 
-fn palindrome(mut a_list: Vec<i32>) -> bool {
+fn palindrome(a_list: &Vec<i32>) -> bool {
     /*
     P06 (*) Find out whether a list is a palindrome.
         Example:
@@ -88,10 +95,10 @@ fn palindrome(mut a_list: Vec<i32>) -> bool {
 
     let mut tmp: Vec<i32> = a_list.clone();
     tmp.reverse();
-    a_list == tmp
+    a_list == &tmp
 }
 
-fn flatten_list() {
+fn flatten_list<T>(a_list: &T) {
     /*
     P07 (**) Flatten a nested list structure.
     Example:
@@ -99,18 +106,26 @@ fn flatten_list() {
     scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
     res0: List[Any] = List(1, 1, 2, 3, 5, 8)
     */
-//    this should not exists
-}
+//    this kind of list should not be
+//    a_list....flatten()
+    for e in a_list. {
+        println!("{:?}", e)
+    }
 
-fn eliminate_consecutive_duplicate(a_list: Vec<i32>) -> Vec<i32> {
-    /*
-    P08 (**) Eliminate consecutive duplicates of list elements.
-    If a list contains repeated elements they should be replaced with a single copy of the element.
-    The order of the elements should not be changed.
-    Example:
 
-    scala> compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
-    res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
-    */
 
 }
+
+//fn eliminate_consecutive_duplicate(a_list: Vec<i32>) -> Vec<i32> {
+//    /*
+//    P08 (**) Eliminate consecutive duplicates of list elements.
+//    If a list contains repeated elements they should be replaced with a single copy of the element.
+//    The order of the elements should not be changed.
+//    Example:
+//
+//    scala> compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+//    res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
+//    */
+//    a_list.iter().
+//
+//}
